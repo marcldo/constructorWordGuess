@@ -25,7 +25,7 @@ const Letter = function (character) {
             printOut = '*';
         }
 
-        console.log(printOut);
+        return printOut;
 
     };
 
@@ -43,8 +43,10 @@ const Letter = function (character) {
     }
 };
 
-let a = new Letter('a');
+module.exports = Letter;
 
-a.updateGuessed('w');
+// let a = new Letter('a');
 
-a.returnChar();
+// a.updateGuessed('a');
+
+// a.returnChar();
