@@ -20,7 +20,7 @@ const Word = function () {
         for (let letter of word) {
             this.letters.push(new Letter(letter));
         }
-        console.log(this.letters);
+
     }
 
     // A function that returns a string representing the word. 
@@ -32,7 +32,7 @@ const Word = function () {
             wordArr.push(letter.returnChar());
         }
         let wordString = wordArr.join("");
-        console.log(wordString);
+        return wordString;
     };
 
     // // A function that takes a character as an argument and calls the guess function on each letter object 
@@ -45,10 +45,10 @@ const Word = function () {
     }
 };
 
-const cat = new Word;
-cat.addLetters("cat");
-cat.wordString();
-cat.guessLetter("a");
-cat.wordString();
+// const ball = new Word;
+// ball.addLetters("ball");
+// ball.wordString();
+// ball.guessLetter("l");
+// ball.wordString();
 
 module.exports = Word;

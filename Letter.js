@@ -35,10 +35,16 @@ const Letter = function (character) {
 
         if (char === character) {
             this.guessed = true;
-
+            console.log("you guessed right")
         }
         else {
-            this.guessed = false;
+            if (this.guessed) {
+                return;
+            }
+            else {
+                this.guessed = false;
+                console.log("false")
+            }
         }
     }
 };
