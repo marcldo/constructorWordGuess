@@ -1,7 +1,7 @@
 const Word = require('./Word');
 const inquirer = require('inquirer');
 const words = require('./wordList.json');
-
+let count = 10;
 
 
 // add words to data.json, then function to pick a random word from data.json 
@@ -11,7 +11,7 @@ getRandomWord();
 
 function getRandomWord() {
     let wordToGuess = '';
-
+    count = 10;
 
     words.forEach((word, index) => {
         let randomWordIndex = Math.floor(Math.random() * (words.length));
@@ -33,8 +33,9 @@ function constructWordObj(wordToGuess) {
 
 
 function startRound(wordObj) {
-    count = 10;
+
     console.log(`Guess this word! 
+You have ${count} lives remaining
 
 ${wordObj.wordString()}
 
@@ -49,9 +50,49 @@ ${wordObj.wordString()}
         .then(answer => {
 
             wordObj.guessLetter(answer.guess);
+
+
         })
         .then(() => {
-            if (count > 0) {
+            let wordNotGuessed = wordObj.wordString().includes("*");
+
+            if (wordNotGuessed === false) {
+                console.log('you guesed it!');
+                inquirer.prompt([
+                    {
+                        type: 'confirm',
+                        message: 'play again?',
+                        name: 'playAgain'
+                    }
+                ])
+                    .then((answer) => {
+                        if (answer.playAgain) {
+                            getRandomWord();
+                        }
+                        else {
+                            return;
+                        }
+                    })
+            }
+            else if (count === 0) {
+                console.log('You ran out of lives x___x');
+                inquirer.prompt([
+                    {
+                        type: 'confirm',
+                        message: 'play again?',
+                        name: 'playAgain'
+                    }
+                ])
+                    .then((answer) => {
+                        if (answer.playAgain) {
+                            getRandomWord();
+                        }
+                        else {
+                            return;
+                        }
+                    })
+            }
+            else if (wordNotGuessed || count > 0) {
 
                 startRound(wordObj);
                 --count;

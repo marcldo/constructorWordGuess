@@ -35,7 +35,7 @@ const Letter = function (character) {
 
         if (char === character) {
             this.guessed = true;
-            console.log("you guessed right")
+
         }
         else {
             if (this.guessed) {
@@ -43,7 +43,7 @@ const Letter = function (character) {
             }
             else {
                 this.guessed = false;
-                console.log("false")
+
             }
         }
     }

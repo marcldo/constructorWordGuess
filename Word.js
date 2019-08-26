@@ -41,7 +41,7 @@ const Word = function () {
         for (let letter of this.letters) {
             letter.updateGuessed(char);
         }
-        console.log(this.letters);
+
     }
 };
 
