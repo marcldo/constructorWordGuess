@@ -34,7 +34,8 @@ function constructWordObj(wordToGuess) {
 
 function startRound(wordObj) {
 
-    console.log(`Guess this word! 
+    console.log(`
+Guess this programming language! 
 You have ${count} lives remaining
 
 ${wordObj.wordString()}
@@ -57,7 +58,7 @@ ${wordObj.wordString()}
             let wordNotGuessed = wordObj.wordString().includes("*");
 
             if (wordNotGuessed === false) {
-                console.log('you guesed it!');
+                console.log(`you guesed it ${wordObj.wordString()}!`);
                 inquirer.prompt([
                     {
                         type: 'confirm',
